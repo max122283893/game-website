@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub - Play Now</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tab Cloaker -->
+    <div id="cloaker-panel" class="cloaker-panel">
+        <button id="cloak-btn" class="cloak-btn" title="Hide this tab to look like Google">🔒 Cloak Tab</button>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>🎮 GAME HUB</h2>
+            <button id="close-sidebar" class="close-btn">✕</button>
+        </div>
+        <nav>
+            <button class="nav-btn active" data-page="home">🏠 Home</button>
+            <button class="nav-btn" data-page="games">🎮 Games</button>
+            <button class="nav-btn" data-page="chatbots">🤖 AI Chatbots</button>
+            <button class="nav-btn" data-page="movies">🎬 Movies</button>
+            <button class="nav-btn" data-page="settings">⚙️ Settings</button>
+        </nav>
+    </div>
+
+    <!-- Toggle Sidebar Button -->
+    <button id="menu-toggle" class="menu-toggle">☰ Menu</button>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>🎮 Welcome to Game Hub</h1>
+                <p>Your ultimate destination for games, AI chatbots, and movies!</p>
+                <div class="feature-cards">
+                    <div class="card">
+                        <h3>🎮 Games</h3>
+                        <p>Play the scary Granny game and more!</p>
+                    </div>
+                    <div class="card">
+                        <h3>🤖 AI Chatbots</h3>
+                        <p>Chat with free AI powered by Fliped.ai & Deep.ai</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎬 Movies</h3>
+                        <p>Watch free movies - no sign up needed!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Games Page -->
+        <div id="games" class="page">
+            <h1>🎮 Games</h1>
+            <div class="games-grid">
+                <div class="game-card">
+                    <h3>👵 Granny - Horror Game</h3>
+                    <p>Escape from Granny's house! Can you survive?</p>
+                    <button class="play-btn" onclick="playGame('granny')">Play Game</button>
+                </div>
+            </div>
+            <div id="game-iframe-container" style="display:none; margin-top: 20px;">
+                <button onclick="closeGame()" class="close-game-btn">← Back</button>
+                <iframe id="game-frame" style="width: 100%; height: 600px; border: none; border-radius: 10px;" allow="autoplay"></iframe>
+            </div>
+        </div>
+
+        <!-- Chatbots Page -->
+        <div id="chatbots" class="page">
+            <h1>🤖 AI Chatbots</h1>
+            <div class="chatbot-selector">
+                <button class="chatbot-btn active" data-chatbot="fliped">🤖 Fliped.ai</button>
+                <button class="chatbot-btn" data-chatbot="deep">🧠 Deep.ai</button>
+            </div>
+            <div id="fliped-chat" class="chatbot-container active">
+                <h3>Chat with Fliped.ai</h3>
+                <p>Ask me anything! Fun facts, stories, jokes, homework help...</p>
+                <iframe src="https://www.fliped.ai" style="width: 100%; height: 600px; border: 2px solid #333; border-radius: 10px;"></iframe>
+            </div>
+            <div id="deep-chat" class="chatbot-container">
+                <h3>Chat with Deep.ai</h3>
+                <p>Ask me anything! Creative writing, questions, ideas...</p>
+                <iframe src="https://www.deep-ai.org/" style="width: 100%; height: 600px; border: 2px solid #333; border-radius: 10px;"></iframe>
+            </div>
+        </div>
+
+        <!-- Movies Page -->
+        <div id="movies" class="page">
+            <h1>🎬 Free Movies</h1>
+            <div class="movie-platforms">
+                <div class="platform-card">
+                    <h3>🎥 Tubi</h3>
+                    <p>Thousands of free movies & TV shows</p>
+                    <a href="https://www.tubi.tv" target="_blank" class="btn">Watch Now</a>
+                </div>
+                <div class="platform-card">
+                    <h3>📺 Pluto TV</h3>
+                    <p>Free live TV and movies</p>
+                    <a href="https://www.pluto.tv" target="_blank" class="btn">Watch Now</a>
+                </div>
+                <div class="platform-card">
+                    <h3>🍿 Popcornflix</h3>
+                    <p>Free movies without ads (limited)</p>
+                    <a href="https://www.popcornflix.com" target="_blank" class="btn">Watch Now</a>
+                </div>
+                <div class="platform-card">
+                    <h3>🎬 Crackle</h3>
+                    <p>Free movies and original series</p>
+                    <a href="https://www.crackle.com" target="_blank" class="btn">Watch Now</a>
+                </div>
+                <div class="platform-card">
+                    <h3>🌟 Freevee</h3>
+                    <p>Amazon's free streaming service</p>
+                    <a href="https://www.freevee.com" target="_blank" class="btn">Watch Now</a>
+                </div>
+                <div class="platform-card">
+                    <h3>🎞️ The Roku Channel</h3>
+                    <p>Free movies and shows</p>
+                    <a href="https://therokuchannel.roku.com" target="_blank" class="btn">Watch Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settings" class="page">
+            <h1>⚙️ Settings</h1>
+            <div class="settings-container">
+                <div class="setting-item">
+                    <h3>🔒 Tab Cloaking</h3>
+                    <p>Hide this page to look like Google Search</p>
+                    <button id="settings-cloak-btn" class="btn-primary">Enable Cloaking</button>
+                    <button id="uncloaked-btn" class="btn-secondary" style="display:none;">Disable Cloaking</button>
+                </div>
+
+                <div class="setting-item">
+                    <h3>🌙 Theme</h3>
+                    <p>Choose your preferred theme</p>
+                    <select id="theme-select" class="dropdown">
+                        <option value="dark">Dark Mode (Default)</option>
+                        <option value="light">Light Mode</option>
+                        <option value="neon">Neon Mode</option>
+                    </select>
+                </div>
+
+                <div class="setting-item">
+                    <h3>🔊 Sound</h3>
+                    <p>Toggle sound effects</p>
+                    <label class="switch">
+                        <input type="checkbox" id="sound-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <h3>🗑️ Clear Data</h3>
+                    <p>Clear browsing history</p>
+                    <button id="clear-data-btn" class="btn-danger">Clear Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cloaked View (Hidden initially) -->
+    <div id="cloaked-view" style="display: none;">
+        <iframe src="https://www.google.com/search?q=google" style="width: 100%; height: 100vh; border: none;"></iframe>
+        <button id="uncloaked-btn-overlay" class="uncloaked-overlay-btn">← Back to Game Hub</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
